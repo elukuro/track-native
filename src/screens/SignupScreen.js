@@ -14,7 +14,8 @@ const SignupScreen = ({ navigation }) => {
           <Text h3>Sign up for Tracker</Text>
         </Spacer>
         <Input
-          autoCompleteType={false}
+          autoComplete="off"
+          autoCorrect={false}
           autoCapitalize="none"
           label="Email"
           value={email}
@@ -22,7 +23,8 @@ const SignupScreen = ({ navigation }) => {
         />
         <Spacer />
         <Input
-          autoCompleteType={false}
+          autoComplete="off"
+          autoCorrect={false}
           autoCapitalize="none"
           label="Password"
           value={password}
