@@ -1,5 +1,8 @@
 import CreateDataContext from "./createDataContext";
 
+// change ngrok base URL every 8 Hours  at api tracker.js
+import trackerAPI from "../api/tracker";
+
 const authReducer = (state, action) => {
   switch (action.type) {
     default:
@@ -7,8 +10,15 @@ const authReducer = (state, action) => {
   }
 };
 
-const signup = (dispatch) => {
-  return ({ email, password }) => {};
+const signup = async (dispatch) => {
+  return async ({ email, password }) => {
+    try {
+      const response = await trackerAPI.post("/signup", { email, password });
+      console.log(response.data);
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
 };
 
 const signin = (dispatch) => {
