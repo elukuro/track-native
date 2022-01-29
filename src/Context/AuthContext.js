@@ -1,7 +1,5 @@
-import CreateDataContext from "./createDataContext";
-
-// change ngrok base URL every 8 Hours  at api tracker.js
-import trackerAPI from "../api/tracker";
+import createDataContext from "./createDataContext";
+import trackerApi from "../api/tracker";
 
 const authReducer = (state, action) => {
   switch (action.type) {
@@ -10,37 +8,33 @@ const authReducer = (state, action) => {
   }
 };
 
-const signup = async (dispatch) => {
+const signup = (dispatch) => {
   return async ({ email, password }) => {
     try {
-      const response = await trackerAPI.post("/signup", { email, password });
+      const response = await trackerApi.post("/signup", { email, password });
       console.log(response.data);
     } catch (err) {
-      console.log(err.message);
+      console.log(err.response.data);
     }
   };
 };
 
 const signin = (dispatch) => {
   return ({ email, password }) => {
-    //try to sign in
-    // handle success by update state
-    // handle failure by showing message
+    // Try to signin
+    // Handle success by updating state
+    // Handle failure by showing error message (somehow)
   };
 };
 
 const signout = (dispatch) => {
   return () => {
-    // somehow signup
+    // somehow sign out!!!
   };
 };
 
-export const { Provider, Context } = CreateDataContext(
+export const { Provider, Context } = createDataContext(
   authReducer,
-  {
-    signin,
-    signout,
-    signup,
-  },
+  { signin, signout, signup },
   { isSignedIn: false }
 );
