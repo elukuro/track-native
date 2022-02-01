@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import reactDom from "react-dom";
 import { View, StyleSheet } from "react-native";
 import { Text, Input, Button } from "react-native-elements";
 import Spacer from "../components/Spacer";
@@ -30,6 +31,9 @@ const SignupScreen = ({ navigation }) => {
         autoCapitalize="none"
         autoCorrect={false}
       />
+      <Text style={styles.errorMessage}>
+        {state.errorMessage ? <Text>{state.errorMessage}</Text> : ""}
+      </Text>
       <Spacer>
         <Button title="Sign Up" onPress={() => signup({ email, password })} />
       </Spacer>
@@ -48,6 +52,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     marginBottom: 250,
+  },
+  errorMessage: {
+    fontSize: 16,
+    color: "red",
+    marginLeft: 15,
+    marginRight: 15,
   },
 });
 
