@@ -12,6 +12,7 @@ const locationReducer = (state, action) => {
 const startRecording = (dispatch) => () => {};
 const stopRecording = (dispatch) => () => {};
 const addLocation = (dispatch) => (location) => {
+  console.log("tracking active");
   dispatch({ type: "ADD_CURRENT_LOCATION", payload: location });
 };
 

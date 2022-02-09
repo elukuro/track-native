@@ -10,7 +10,7 @@ import { Context as LocationContext } from "../context/LocationContext";
 
 const TrackCreateScreen = ({ isFocused }) => {
   const { addLocation } = useContext(LocationContext);
-  const [err] = useLocation(addLocation);
+  const [err] = useLocation(isFocused, addLocation);
   console.log(isFocused);
   return (
     <SafeAreaView style={styles.container}>
