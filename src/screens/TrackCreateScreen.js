@@ -1,45 +1,26 @@
 import "../_mockLocation";
 import React, { useContext } from "react";
-import { StyleSheet, SafeAreaView } from "react-native";
-import { withNavigationFocus } from "react-navigation";
+import { StyleSheet } from "react-native";
 import { Text } from "react-native-elements";
-import useLocation from "../hooks/useLocation";
-import Map from "./../components/Map";
-
+import { SafeAreaView, withNavigationFocus } from "react-navigation";
+import Map from "../components/Map";
 import { Context as LocationContext } from "../context/LocationContext";
+import useLocation from "../hooks/useLocation";
 
 const TrackCreateScreen = ({ isFocused }) => {
-  const { addLocation } = useContext(LocationContext);
-  const [err] = useLocation(isFocused, addLocation);
   console.log(isFocused);
+  const { addLocation } = useContext(LocationContext);
+  const [err] = useLocation(isFocused, (location) => addLocation(location));
+
   return (
-    <SafeAreaView style={styles.container}>
-      <Text h3>Create a Track</Text>
+    <SafeAreaView forceInset={{ top: "always" }}>
+      <Text h2>Create a Track</Text>
       <Map />
-      {err ? <Text>{err.message} please enable location service</Text> : null}
+      {err ? <Text>Please enable location services</Text> : null}
     </SafeAreaView>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    paddingVertical: 40,
-    flex: 1,
-  },
-});
+const styles = StyleSheet.create({});
 
 export default withNavigationFocus(TrackCreateScreen);
-
-// update funciton start watching
-// also need to import
-// import { requestForegroundPermissionsAsync } from 'expo-location';
-// const startWatching = async () => {
-//   try {
-//     const { granted } = await requestPermissionsAsync();
-//     if (!granted) {
-//       throw new Error('Location permission not granted');
-//     }
-//   } catch (e) {
-//     setErr(e);
-//   }
-// };
