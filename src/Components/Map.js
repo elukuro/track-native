@@ -10,7 +10,6 @@ const Map = () => {
   if (!currentLocation) {
     return null;
   }
-  console.log(currentLocation);
   return (
     <MapView
       style={styles.map}
