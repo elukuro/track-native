@@ -9,7 +9,6 @@ import useLocation from "../hooks/useLocation";
 import TrackForm from "../components/TrackForm";
 
 const TrackCreateScreen = ({ isFocused }) => {
-  console.log(isFocused);
   const {
     state: { recording },
     addLocation,
