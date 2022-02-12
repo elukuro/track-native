@@ -38,8 +38,7 @@ export default (shouldTrack, callback) => {
       subscriber.remove();
       setSubscriber(null);
     }
-
     // run when shouldTrack changes
-  }, [shouldTrack]);
+  }, [shouldTrack, callback]);
   return [err];
 };
