@@ -35,4 +35,9 @@ const styles = StyleSheet.create({
   },
 });
 
+TrackCreateScreen.navigationOptions = {
+  title: "Create Track",
+  tabBarIcon: () => <Text>+</Text>,
+};
+
 export default withNavigationFocus(TrackCreateScreen);

@@ -10,6 +10,7 @@ import {
 import { NavigationEvents } from "react-navigation";
 import { Context as TrackContext } from "./../context/TrackContext";
 import { ListItem } from "react-native-elements/dist/list/ListItem";
+import TrackDetailScreen from "./TrackDetailScreen";
 
 const TrackListScreen = ({ navigation }) => {
   const { state, fetchTracks } = useContext(TrackContext);
@@ -33,6 +34,10 @@ const TrackListScreen = ({ navigation }) => {
       />
     </View>
   );
+};
+
+TrackDetailScreen.navigationOptions = () => {
+  title: "Tracks";
 };
 
 const styles = StyleSheet.create({});

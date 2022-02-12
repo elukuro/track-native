@@ -19,6 +19,10 @@ const AccountScreen = () => {
   );
 };
 
+AccountScreen.navigationOptions = () => {
+  title: "Account";
+};
+
 const styles = StyleSheet.create({});
 
 export default AccountScreen;
